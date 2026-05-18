@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Men's shirt Collection</title>
+    <style>
+        body {
+            color: black;
+        }
+        .big-box {
+            border: 2px solid black;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .clothing-item {
+            display: inline-block;
+            margin: 10px;
+        }
+        .clothing-image {
+            width: 200px;
+            height: auto;
+        }
+        .price {
+            font-weight: bold;
+        }
+        .cart {
+            border: 2px solid black;
+            padding: 20px;
+        }
+        .selected-item {
+            margin-bottom: 10px;
+        }
+.clothing-image:hover{
+transform:scale(1.09);
+z-index:2;
+clothing-image-shadow:0 4px 17px rgba(0,0,0,0.35);
+}
+
+    </style>
+</head>
+<body>
+
+    <h2>Men's shirt collection</h2>
+    <div class="clothing-container">
+        <div class="clothing-item">
+            <img src="s55.jpeg" alt="Cloth 1" class="clothing-image">
+<p>Regular Fit Linen shirt<p/>
+<div class="price">&#8377;1499</div>
+
+            <input type="checkbox" class="item-checkbox">
+        </div>
+        <div class="clothing-item">
+            <img src="s22.jpeg" alt="Cloth 2" class="clothing-image">
+           <p>Regular Fit Linen shirt</p>
+<div class="price">&#8377;1499</div>
+
+
+            <input type="checkbox" class="item-checkbox">
+        </div>
+		<div class="clothing-item">
+            <img src="shirt.jpeg" alt="Cloth 3" class="clothing-image">
+           <p>Regular Fit Linen shirt</p>
+<div class="price">&#8377;1499</div>
+
+
+            <input type="checkbox" class="item-checkbox">
+        </div>
+		<div class="clothing-item">
+            <img src="shirt2.jpeg" alt="Cloth 4" class="clothing-image">
+<p>Slim Fit Easy-iron shirt</p>
+<div class="price">&#8377;1299</div>
+
+
+            <input type="checkbox" class="item-checkbox">
+        </div>
+		<div class="clothing-item">
+            <img src="s11.jpeg" alt="Cloth 5" class="clothing-image">
+<p>Regular Fit Oxford shirt</p>
+<div class="price">&#8377;1399</div>
+
+
+            <input type="checkbox" class="item-checkbox">
+        </div>
+		<div class="clothing-item">
+            <img src="s12.jpeg" alt="Cloth 6" class="clothing-image">
+            <p>Regular Fit Crochet-look resort shirt</p>
+<div class="price">&#8377;1699</div>
+
+
+            <input type="checkbox" class="item-checkbox">
+        </div>
+<div class="clothing-item">
+            <img src="s77.jpeg" alt="Cloth 7" class="clothing-image">
+<p>Regular Fit Crinkled resort shirt</p>
+<div class="price">&#8377;1599</div>
+
+
+            <input type="checkbox" class="item-checkbox">
+        </div>
+<div class="clothing-item">
+            <img src="s88.jpeg" alt="Cloth 8" class="clothing-image">
+<p>Regular Fit Lyocell resort shirt</p>
+<div class="price">&#8377;1999</div>
+
+
+            <input type="checkbox" class="item-checkbox">
+        </div>
+<div class="clothing-item">
+            <img src="s99.jpeg" alt="Cloth 9" class="clothing-image">
+<p>Relaxed Fit Linen resort shirt</p>
+<div class="price">&#8377;1299</div>
+
+
+            <input type="checkbox" class="item-checkbox">
+        </div>
+<div class="clothing-item">
+            <img src="s10.jpeg" alt="Cloth 10" class="clothing-image">
+<p>Loose Fit Printed resort shirt</p>
+<div class="price">&#8377;1999</div>
+
+
+            <input type="checkbox" class="item-checkbox">
+        </div>
+
+        <!-- Add more clothing items here -->
+    </div>
+
+    <h2>Shopping Cart</h2>
+    <div id="cart" class="cart big-box">
+        <!-- Selected items will be displayed here -->
+    </div>
+
+    <h2>Shipping Address</h2>
+    <div id="shipping-address" class="big-box">
+        <!-- Shipping address form here -->
+        <form id="shipping-form">
+            <label for="address">Enter your shipping address:</label><br>
+            <textarea id="address" name="address" rows="4" cols="50"></textarea><br>
+			
+			
+			
+			<style>
+    /* CSS styles for the button */
+    .submit-button {
+        background-color: black;
+        color: white;
+        border-radius: 10px;
+        padding: 10px 20px;
+        border: none;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    /* CSS styles for button hover */
+    .submit-button:hover {
+        background-color: gray;
+        color: black;
+    }
+</style>
+<button type="submit" class="submit-button">Submit</button>
+<a href="final.html" class="submit-button">Confirm</a>
+			
+			
+        </form>
+    </div>
+
+    <script>
+        const checkboxes = document.querySelectorAll('.item-checkbox');
+        const cart = document.getElementById('cart');
+        const shippingForm = document.getElementById('shipping-form');
+
+        shippingForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const address = document.getElementById('address').value;
+            const totalAmount = calculateTotalAmount();
+            const message = `Your order will be shipped to: ${address}. Cash on Delivery: Total amount: ₹${totalAmount}`;
+            alert(message);
+        });
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    const item = this.parentElement.cloneNode(true);
+                    item.classList.remove('clothing-item');
+                    item.classList.add('selected-item');
+                    cart.appendChild(item);
+                } else {
+                    const item = this.parentElement;
+                    const selectedItems = cart.querySelectorAll('.selected-item');
+                    selectedItems.forEach(selectedItem => {
+                        if (selectedItem.querySelector('.clothing-image').src === item.querySelector('.clothing-image').src) {
+                            selectedItem.remove();
+                        }
+                    });
+                }
+            });
+        });
+
+        function calculateTotalAmount() {
+            let total = 0;
+            const selectedItems = document.querySelectorAll('.selected-item');
+            selectedItems.forEach(item => {
+                const priceText = item.querySelector('.price').textContent;
+                const price = parseFloat(priceText.substring(1)); // Remove the '$' sign and parse as float
+                total += price;
+            });
+            return total.toFixed(2); // Round to 2 decimal places
+        }
+    </script>
+</body>
+</html>

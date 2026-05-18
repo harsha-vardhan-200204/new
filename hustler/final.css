@@ -1,0 +1,44 @@
+body {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+    /* Adjust the following properties */
+    max-width: 400px; /* Set maximum width */
+    margin: 20px; /* Add margin around the container */
+    transform: scale(0.90); /* Apply scale transform */
+    transform-origin: center; /* Center the transform origin */
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.gif-container {
+    display: flex;
+    justify-content: center;
+}
+
+.gif-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
